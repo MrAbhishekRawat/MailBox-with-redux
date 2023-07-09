@@ -1,8 +1,6 @@
 import axios from "axios";
+import { formatEmail } from "./HelperFunctions";
 
-export const formatEmail = (email) => {
-    return email.replace(/[.@]/g, '-');
-};
 
 
 export const sentForInbox = async ({ toEmail, data }) => {
@@ -29,6 +27,29 @@ export const sentForSentbox = async ({ fromEmail, data }) => {
                 data
             }
         );
+        return res.data;
+    } catch (error) {
+        return error;
+    }
+}
+
+export const gettingRecivedEmails = async (fromEmail) => {
+    const formattedEmail = await formatEmail(fromEmail)
+    try {
+        const res = await axios.get(
+            `https://mailboxredux-default-rtdb.asia-southeast1.firebasedatabase.app//${formattedEmail}/inbox.json`);
+            console.log(res)
+        return res.data;
+    } catch (error) {
+        return error;
+    }
+}
+
+export const gettingSentEmails = async (fromEmail) => {
+    const formattedEmail = await formatEmail(fromEmail)
+    try {
+        const res = await axios.get(
+            `https://mailboxredux-default-rtdb.asia-southeast1.firebasedatabase.app//${formattedEmail}/sent.json`);
         return res.data;
     } catch (error) {
         return error;
