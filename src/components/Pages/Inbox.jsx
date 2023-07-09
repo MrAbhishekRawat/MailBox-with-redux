@@ -1,21 +1,31 @@
 import React, { useEffect, useState } from "react";
 import styles from "./Inbox.module.css";
 import Email from "../EmailBox";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { gettingRecivedEmails } from "../../store/MailApi"; 
+import { unReadEmailsHandler } from "../../store/AuthRedux";
 
 const Inbox = () => {
   const [emails, setEmails] = useState([]);
   const userEmail = useSelector((state) => state.auth.userEmail);
 
+const dispatch = useDispatch()
   useEffect(() => {
     const fun = async () => {
       const res = await gettingRecivedEmails(userEmail);
       if(res) setEmails(Object.entries(res));
-      console.log(res)
     };
     fun();
   }, []);
+
+  useEffect(()=>{
+    let totalUnreadEmails = emails?.reduce((curr, data) => {
+      if (!data[1].data.isRead) curr++;
+      return curr;
+    }, 0);
+    dispatch(unReadEmailsHandler(totalUnreadEmails))
+  },[emails])
+  
   
 
   return (

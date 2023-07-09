@@ -1,12 +1,14 @@
 .email {
     display: grid;
-    grid-template-columns: 200px auto 100px;
+    grid-template-columns: 10px 200px auto 100px;
     box-shadow: 0 0 0 2px #ccc;
     cursor: pointer;
     margin: 8px 10px;
     align-items: center;
-    gap: 20px;
     padding: 0 10px;
+  }
+  .email h4 {
+    margin-left: 8px ;
   }
   
   .email p {
@@ -16,3 +18,7 @@
     overflow: hidden;
     text-overflow: ellipsis;
   }
+ .isRead svg {
+  color: blue;
+  font-size: 8px;
+ }

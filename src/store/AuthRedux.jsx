@@ -7,6 +7,7 @@ const initialState = {
     userEmail: localState && localState.userEmail?  localState.userEmail :  "",
     userName: localState && localState.userName,
     isLoggedIn: localState && localState.token?  true : false,
+    unReadEmails: 0
   }
 const authSlice = createSlice({
   name: "auth",
@@ -36,11 +37,15 @@ const authSlice = createSlice({
       
 
     },
+    unReadEmailsHandler(state, action){
+      state.unReadEmails= action.payload;
+
+    }
     
   },
 });
 
-export const { login, logout} = 
+export const { login, logout, unReadEmailsHandler} = 
   authSlice.actions;
 
 export default authSlice.reducer;
