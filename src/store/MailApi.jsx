@@ -38,7 +38,7 @@ export const gettingRecivedEmails = async (fromEmail) => {
     try {
         const res = await axios.get(
             `https://mailboxredux-default-rtdb.asia-southeast1.firebasedatabase.app//${formattedEmail}/inbox.json`);
-            console.log(res)
+            
         return res.data;
     } catch (error) {
         return error;
