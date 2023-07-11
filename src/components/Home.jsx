@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { NavLink , useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../store/AuthRedux";
 import Compose from "./Compose";
@@ -50,16 +50,18 @@ const Home = () => {
       </div>
       <ul className={styles.options}>
         <li>
-          <Link className={styles.inbox} to="/">
+          <NavLink className={({isActive})=>isActive? styles.active: styles.option} to="/">
             Inbox
             <span>{totalUnreadEmails}</span>
-          </Link>
+          </NavLink>
         </li>
         <li>
-          <Link to="/sent">Sent</Link>
+          <NavLink className={({isActive})=>{
+            console.log(isActive);
+            return isActive? styles.active: styles.option}}  to="/sent">Sent</NavLink>
         </li>
         <li>
-          <Link to="/draft">Draft</Link>
+          <NavLink className={({isActive})=>isActive? styles.active: styles.option}  to="/draft">Draft</NavLink>
         </li>
         <button onClick={logoutHandler}>Logout</button>
       </ul>

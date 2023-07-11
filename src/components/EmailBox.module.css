@@ -1,7 +1,18 @@
+.container{
+  display: grid ;
+  grid-template-columns: auto 80px;
+  box-shadow: 0 0 0 2px #ccc;
+  padding: 10px;
+  margin: 0 12px 12px 12px;
+
+}
+.container h4, .container p{
+  margin: 0;
+}
+
 .email {
     display: grid;
     grid-template-columns: 10px 200px auto 100px;
-    box-shadow: 0 0 0 2px #ccc;
     cursor: pointer;
     margin: 8px 10px;
     align-items: center;
@@ -22,4 +33,19 @@
  .isRead svg {
   color: blue;
   font-size: 8px;
+ }
+
+ .container button{
+  color: white;
+  background-color: rgb(199, 35, 35);
+  cursor: pointer;
+ }
+
+ .container button:hover{
+  background-color: red;
+ }
+ .delete{
+  display: flex;
+  align-items: center;
+  justify-content: center;
  }

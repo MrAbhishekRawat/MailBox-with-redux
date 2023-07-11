@@ -35,7 +35,7 @@ const Email = ({id, email, sent }) => {
         
       </Link>
 
-      {!sent && <button onClick={deleteMailHandler}>Delete</button>}
+     <div className={styles.delete}>{!sent && <button onClick={deleteMailHandler}>Delete</button>}</div> 
     </div>
   );
 };
