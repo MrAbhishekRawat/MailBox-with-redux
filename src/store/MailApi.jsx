@@ -80,5 +80,16 @@ export const isReadEmaiHandler = async ({email, id, data}) => {
     }
 }
 
+export const deleteMail = async ({ email, id }) => {
+    const formattedEmail = await formatEmail(email)
+    try {
+        const res = await axios.delete(
+            `https://mailboxredux-default-rtdb.asia-southeast1.firebasedatabase.app//${formattedEmail}/inbox/${id}.json`);
+        return res;
+    } catch (error) {
+        return error;
+    }
+}
+
 
 
