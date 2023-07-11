@@ -67,6 +67,17 @@ export const gettingInboxSingleEmail = async ({email, id}) => {
     }
 }
 
+export const gettingSentSingleEmail = async ({email, id}) => {
+    const formattedEmail = await formatEmail(email)
+    try {
+        const res = await axios.get(
+            `https://mailboxredux-default-rtdb.asia-southeast1.firebasedatabase.app//${formattedEmail}/sent/${id}.json`);
+            return res.data;
+    } catch (error) {
+        return error;
+    }
+}
+
 export const isReadEmaiHandler = async ({email, id, data}) => {
     const formattedEmail = await formatEmail(email)
     try {

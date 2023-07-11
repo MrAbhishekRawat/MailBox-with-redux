@@ -8,6 +8,7 @@ import Draft from "./components/Pages/Draft";
 import ShowMail from "./components/ShowMail";
 import { useSelector } from "react-redux";
 import "./App.css";
+import ShowSentMails from "./components/ShowSentMails";
 
 const App = () => {
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
@@ -29,8 +30,10 @@ const App = () => {
                     <Routes>
                       <Route path="/" element={<Inbox />} />
                       <Route path="/sent" element={<Sent />} />
+
                       <Route path="/drafts" element={<Draft />} />
                       <Route path="/emails/:id" element={<ShowMail />} />
+                      <Route path="/sent/:id" element={<ShowSentMails />} />
                     </Routes>
                   </div>
                 </div>
