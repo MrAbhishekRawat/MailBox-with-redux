@@ -16,7 +16,14 @@ const dispatch = useDispatch()
       if(res) setEmails(Object.entries(res));
     };
     fun();
+    
+  const interval=  setInterval(fun, 2000);
+  console.log("run")
+  return ()=>{clearInterval(interval)}
+
+
   }, []);
+
 
   useEffect(()=>{
     let totalUnreadEmails = emails?.reduce((curr, data) => {
