@@ -90,3 +90,7 @@
 .options button:hover{
   background-color: #2fce35;
 }
+
+.options p{
+  font-size: 12px;
+}
